@@ -32,11 +32,12 @@ class DeviseCreateMembers < ActiveRecord::Migration[7.0]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-
+      t.string :member_name, null: false
       t.timestamps null: false
     end
 
     add_index :members, :email,                unique: true
+    add_index :members, :member_name,          unique: true
     add_index :members, :reset_password_token, unique: true
     # add_index :members, :confirmation_token,   unique: true
     # add_index :members, :unlock_token,         unique: true
